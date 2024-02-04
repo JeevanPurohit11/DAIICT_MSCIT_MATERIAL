@@ -1,0 +1,109 @@
+lab assignment 1:-
+
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isPalindrome(string s){
+    bool ans = true;
+    int size = s.size();
+    for(int i = 0; i < size/2; i++){
+        if(s[i] != s[size-i-1]){
+            ans = false;
+            break;
+        }
+    }
+    return ans;
+}
+
+void makeStringRight(string &s){
+    string temp = "";
+    for(int i = 0; i < s.size(); i++){
+        if(s[i] >= 'A' && s[i] <= 'Z'){
+            char ch = s[i] - 65;
+            temp += ch;
+        }
+        if(s[i] >= 'a' && s[i] <= 'z'){
+            char ch = s[i] - 97;
+            temp += ch;
+        }
+    }
+    s = temp;
+}
+
+int main()
+{
+    string str;
+    getline(cin, str);
+    makeStringRight(str);
+    if(isPalindrome(str)){
+        cout << "string is palindrome.\n";
+    }else{
+        cout << "string is not palindrome.\n";
+    }
+    return 0;
+}
+
+2)
+#include <bits/stdc++.h>
+using namespace std;
+
+bool isPrime(int n){
+    if(n == 0 || n == 1) return false;
+    
+    bool ans = true;
+    for(int i = 2; i < n; i++){
+        if(n % i == 0){
+            ans = false;
+            break;
+        }
+    }
+    return ans;
+}
+
+int main()
+{
+    int count;
+    cin >> count;
+    
+    int num = 0;
+    while(count > 0){
+        if(isPrime(num)){
+            cout << num << " ";
+            count--;
+        }
+        num++;
+    }
+    return 0;
+}
+
+3)
+#include <bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    int num;
+    cin >> num;
+    
+    int n1 = 1;
+    int n2 = 1;
+    cout << 0 << " ";
+    for(int i = 1; n1 <= num; i++){
+        if(n1 % 3 == 0 && n1 % 5 == 0){
+            cout << "fizzbuzz ";
+        }else if(n1 % 3 == 0){
+            cout << "fizz ";
+        }else if(n1 % 5 == 0){
+            cout << "buzz ";
+        }else{
+            cout << n1 << " ";
+        }
+        
+        int temp = n2;
+        n2 =  n1 + n2;
+        n1 = temp;
+    }
+
+    return 0;
+}
+
